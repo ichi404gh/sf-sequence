@@ -1,4 +1,6 @@
-import {NameStep, SequenceSteps, SummaryStep} from "./steps.tsx";
+import {NameStep} from "./nameStep.tsx";
+import {SequenceSteps} from "./sequenceSteps.tsx";
+import {SummaryStep} from "./summaryStep.tsx";
 
 export const steps = [
   {

@@ -2,14 +2,10 @@ import {useEffect, useState} from "react";
 import {useLoaderData} from "react-router";
 import {useSetAtom} from "jotai";
 
-import type {SequenceData} from "./loader.tsx";
 import {Step, Stepper} from "../stepper.tsx";
-import {sequenceNameAtom, sequenceSummaryAtom} from "./atoms.ts";
-
-import {steps} from "./stepsData.ts";
-
-
-
+import {sequenceNameAtom, sequenceStepsAtom, sequenceSummaryAtom} from "./atoms.ts";
+import {steps} from "./steps/stepsData.ts";
+import type {SequenceData} from "./types.ts";
 
 
 export function Sequence() {
@@ -18,11 +14,13 @@ export function Sequence() {
 
   const setSequenceName = useSetAtom(sequenceNameAtom);
   const setSequenceSummary = useSetAtom(sequenceSummaryAtom);
+  const setSequenceSteps = useSetAtom(sequenceStepsAtom);
 
   useEffect(() => {
     setSequenceName(() => data.name);
     setSequenceSummary(() => data.summary);
-  }, [data, setSequenceName, setSequenceSummary]);
+    setSequenceSteps(() => data.steps);
+  }, [data, setSequenceName, setSequenceSummary, setSequenceSteps]);
 
   const ActiveStepComponent = steps[step].component;
 
