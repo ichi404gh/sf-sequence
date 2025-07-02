@@ -7,6 +7,8 @@ import {Layout} from "./components/layout.tsx";
 import {Sequence} from "./components/sequence/sequence.tsx";
 import {loader as sequenceLoader, newSequenceLoader} from "./components/sequence/loader.ts";
 import {Error} from "./components/sequence/error.tsx";
+import {Layout as SequenceLayout} from "./components/sequence/layout.tsx";
+
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +21,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "sequence",
+        Component: SequenceLayout,
         children: [
           {
             path: "new",

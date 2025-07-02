@@ -4,8 +4,8 @@ import clsx from 'clsx';
 interface StepData {
   title: string;
   description: string;
-  active?: boolean;
-  completed?: boolean;
+  index: number,
+  step: number,
 }
 
 export function Stepper({children}: { children: React.ReactNode[] }) {
@@ -17,7 +17,11 @@ export function Stepper({children}: { children: React.ReactNode[] }) {
   )
 }
 
-export function Step({title, description, active, completed}: StepData) {
+export function Step({title, description, index, step}: StepData) {
+  const completed = step > index;
+  const active = step >= index;
+  const current = step === index;
+
   return (
     <li className="md:shrink md:basis-0 flex-1 group flex gap-x-2 md:block">
       <div
@@ -49,10 +53,10 @@ export function Step({title, description, active, completed}: StepData) {
 
       </div>
       <div className="grow md:grow-0 md:mt-3 pb-5 md:text-center">
-      <span className="block text-sm font-medium text-gray-800">
-        {title}
-      </span>
-        <p className="text-sm text-gray-500">
+        <span className={clsx("block text-sm font-medium", current ? 'text-[#6941C6]' : 'text-gray-800')}>
+          {title}
+        </span>
+        <p className={clsx("text-sm ", current ? 'text-[#6E40D7]' : 'text-gray-500')}>
           {description}
         </p>
       </div>

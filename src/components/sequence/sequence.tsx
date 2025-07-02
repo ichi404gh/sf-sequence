@@ -1,40 +1,51 @@
+import {useEffect, useState} from "react";
 import {useLoaderData} from "react-router";
+import {useSetAtom} from "jotai";
+
 import type {SequenceData} from "./loader.tsx";
 import {Step, Stepper} from "../stepper.tsx";
-import {useState} from "react";
+import {sequenceNameAtom, sequenceSummaryAtom} from "./atoms.ts";
+
+import {steps} from "./stepsData.ts";
+
+
+
 
 
 export function Sequence() {
   const data = useLoaderData<SequenceData>();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
+
+  const setSequenceName = useSetAtom(sequenceNameAtom);
+  const setSequenceSummary = useSetAtom(sequenceSummaryAtom);
+
+  useEffect(() => {
+    setSequenceName(() => data.name);
+    setSequenceSummary(() => data.summary);
+  }, [data, setSequenceName, setSequenceSummary]);
+
+  const ActiveStepComponent = steps[step].component;
+
   return (
     <>
       <div>
         <Stepper>
-          <Step
-            title="Name & Product"
-            description="Provide sequence name & product"
-            completed={step > 0}
-            active={step >= 0}
-          />
-          <Step
-            title="Sequence steps"
-            description="Create sequence steps for your sequence"
-            completed={step > 1}
-            active={step >= 1}
-          />
-          <Step
-            title="Summary"
-            description="Summary of your sequence"
-            completed={step > 2}
-            active={step >= 2}
-          />
+          {steps.map((stepDefinition, index) => (
+            <Step
+              key={index}
+              title={stepDefinition.stepperTitle}
+              description={stepDefinition.description}
+              index={index}
+              step={step}
+            />
+          ))}
         </Stepper>
       </div>
-      <div>
-        {JSON.stringify(data)}
-      </div>
-    </>
-  )
 
+      <ActiveStepComponent
+        onPrev={() => setStep(step - 1)}
+        onNext={() => setStep(step + 1)}
+      />
+    </>
+  );
 }
