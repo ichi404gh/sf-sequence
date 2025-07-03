@@ -21,4 +21,4 @@ export const steps = [
     description: 'Summary of your sequence',
     component: SummaryStep,
   }
-];
+] as const;
