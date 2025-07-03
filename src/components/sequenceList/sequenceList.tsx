@@ -7,6 +7,7 @@ export function SequenceList() {
 
   return (
     <>
+      <h2 className="text-3xl font-semibold my-4">Sequences</h2>
       <div>
         <NavLink to="/sequence/new">Create New</NavLink>
       </div>

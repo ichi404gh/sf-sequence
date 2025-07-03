@@ -6,10 +6,11 @@ export function Error() {
 
 
   if (hasStatus(error) && error.status === 404) {
-    return (<div>
-      <h3>Not Found</h3>
-      <p>Sequence with provided id does not exist</p>
-    </div>);
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <h3 className="font-semibold text-lg">Not Found</h3>
+      </div>
+    );
   }
 
   return (
@@ -23,6 +24,6 @@ export function Error() {
   )
 }
 
-function hasStatus(obj: unknown): obj is {status: number} {
+function hasStatus(obj: unknown): obj is { status: number } {
   return typeof obj === 'object' && obj !== null && 'status' in obj;
 }

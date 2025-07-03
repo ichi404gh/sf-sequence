@@ -13,6 +13,7 @@ import {Layout as SequenceLayout} from "./components/sequence/layout.tsx";
 export const router = createBrowserRouter([
   {
     Component: Layout,
+    ErrorBoundary: Error,
     children: [
       {
         index: true,
@@ -27,12 +28,17 @@ export const router = createBrowserRouter([
             path: "new",
             Component: Sequence,
             loader: newSequenceLoader,
+            handle: {
+              breadcrumb: 'Sequence',
+            },
           },
           {
             path: ":id",
             Component: Sequence,
             loader: sequenceLoader,
-            ErrorBoundary: Error,
+            handle: {
+              breadcrumb: 'Sequence',
+            },
           }
         ]
       }
