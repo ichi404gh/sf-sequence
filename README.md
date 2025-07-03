@@ -18,7 +18,8 @@ A web application for creating and managing sequences with customizable steps. B
 
 1. Clone the repository:
 ```shell
-git clone <repository-url> cd sequence-builder
+git clone git@github.com:ichi404gh/sf-sequence.git 
+cd sf-sequence
 
 ```
 2. Install dependencies:
