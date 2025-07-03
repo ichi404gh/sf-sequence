@@ -20,7 +20,6 @@ export default tseslint.config([
       globals: globals.browser,
     },
     rules: {
-      "jsx-self-closing-comp": "error",
     },
   },
 ])

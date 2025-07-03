@@ -2,7 +2,7 @@ import {useAtom} from "jotai";
 
 import type {StepProps} from "./types.ts";
 import {StepHeader} from "./stepHeader.tsx";
-import {steps} from "./stepsData.ts";
+import {steps} from "./stepsDefinition.ts";
 import type {SequenceStepData} from "../types.ts";
 import {sequenceStepsAtom} from "../atoms.ts";
 import {Button} from "../../ui/button.tsx";

@@ -17,7 +17,7 @@ export default function RichTextEditor(
     ],
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-2 focus:outline-none',
+        class: 'prose prose-sm sm:prose-base m-2 focus:outline-none',
       },
     },
 
@@ -31,7 +31,7 @@ export default function RichTextEditor(
   return (
     <>
       <MenuBar editor={editor}/>
-      <EditorContent editor={editor}/>
+      <EditorContent className="overflow-y-scroll max-h-96" editor={editor}/>
     </>
   )
 }

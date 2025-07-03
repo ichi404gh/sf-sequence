@@ -4,7 +4,7 @@ import {useSetAtom} from "jotai";
 
 import {Step, Stepper} from "../stepper.tsx";
 import {sequenceNameAtom, sequenceStepsAtom, sequenceSummaryAtom} from "./atoms.ts";
-import {steps} from "./steps/stepsData.ts";
+import {steps} from "./steps/stepsDefinition.ts";
 import type {SequenceData} from "./types.ts";
 
 
@@ -26,7 +26,7 @@ export function Sequence() {
 
   return (
     <>
-      <div>
+      <div className="my-4">
         <Stepper>
           {steps.map((stepDefinition, index) => (
             <Step

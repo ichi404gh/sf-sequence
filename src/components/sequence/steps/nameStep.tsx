@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import {sequenceNameAtom, sequenceSummaryAtom} from "../atoms.ts";
 import {StepHeader} from "./stepHeader.tsx";
-import {steps} from "./stepsData.ts";
+import {steps} from "./stepsDefinition.ts";
 import type { StepProps } from "./types.ts";
 
 export function NameStep(props: StepProps) {

@@ -6,6 +6,7 @@ export interface SequenceStepData {
 }
 
 export interface SequenceData {
+  id?: string;
   name: string;
   summary: string;
   steps: SequenceStepData[];
